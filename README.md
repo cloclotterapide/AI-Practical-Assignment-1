@@ -18,6 +18,7 @@ player with more points wins
 
 ## Tasks 
 *Subject to modification*
+
 **Person 1: Front-end Development and Minimax Algorithm**
 Front-end: Lead the design and implementation of the initial GUI layout using Tkinter, focusing on the main game window, menus, and game setup options.
 Minimax: Develop the Minimax algorithm for the game, ensuring it integrates seamlessly with the game logic.
