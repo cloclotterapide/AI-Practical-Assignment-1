@@ -21,9 +21,9 @@ def HumanChoiceNumber():
 #Initialisation of the game
 def Initialisation():
     ComputerScore = 0
-    HumainScore = 0
+    HumanScore = 0
     Number = HumanChoiceNumber()
-    return ComputerScore, HumainScore, Number
+    return ComputerScore, HumanScore, Number
     
 #Modifying the score depending of the player
 def Scoring(CurrentPlayerScore,OpponentPlayerScore,Number):
