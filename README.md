@@ -19,26 +19,28 @@ player with more points wins
 ## Tasks 
 *Subject to modification*
 
-**Person 1: Front-end Development and Minimax Algorithm**
+Person 1: GUI Design and User Experience
+Responsibilities:
+Lead the design and implementation of the GUI in gui.py, focusing on the overall user experience, including the main menu, game setup options, and in-game interfaces.
+Ensure the GUI is intuitive and responsive, with clear feedback for player actions.
 
-Front-end: Lead the design and implementation of the initial GUI layout using Tkinter, focusing on the main game window, menus, and game setup options.
+Person 2: Game Logic and State Management
+Responsibilities:
+Develop the core game mechanics in game_logic.py, including turn management, scoring rules, and game termination conditions.
+Manage the game state, ensuring accurate tracking of the current number, player scores, and turn sequence.
 
-Minimax: Develop the Minimax algorithm for the game, ensuring it integrates seamlessly with the game logic.
+Person 3: Minimax Algorithm Development
+Responsibilities:
+Implement and optimize the Minimax algorithm in minimax.py, ensuring its integration with the game logic for AI decision-making.
+Work with Persons 4 and 5 on integrating AI algorithms with the game and conducting performance analysis.
 
-**Person 2: Game Logic and Alpha-Beta Algorithm**
+Person 4: Alpha-Beta Algorithm Development
+Responsibilities:
+Develop the Alpha-Beta pruning algorithm in alpha_beta.py, focusing on efficiency and integration with the game's decision-making processes.
+Collaborate with Persons 3 and 5 to refine AI strategies and evaluate algorithm performance.
 
-Game Logic: Develop the core mechanics of the game, including the rules for scoring, turns, and game termination conditions.
-
-Alpha-Beta: Implement the Alpha-Beta pruning algorithm, optimizing it for performance and ensuring it works well with the game logic.
-
-**Person 3: GUI Enhancements and Minimax Testing**
-
-GUI Enhancements: Work on advanced GUI features, such as animations, game state updates, and end-game screens.
-
-Minimax Testing: Assist Person 1 in testing and refining the Minimax algorithm, including conducting experiments to evaluate performance.
-
-**Person 4: Data Management and Alpha-Beta Testing**
-
-Data Management: Implement the functionality for generating the initial game numbers and managing game state changes. This includes integrating NumPy for efficient data handling.
-
-Alpha-Beta Testing: Work with Person 2 to test and refine the Alpha-Beta algorithm, conducting performance evaluations similar to those for Minimax.
+Person 5: Data Management and AI Integration
+Responsibilities:
+Oversee data management, including the generation of initial game numbers and the use of NumPy for efficient data operations.
+Facilitate the integration of AI algorithms (Minimax and Alpha-Beta) with the game logic and GUI, serving as a bridge between the AI developers and the rest of the team.
+Lead the design and execution of experiments to test AI algorithm effectiveness, collecting and analyzing performance data.
