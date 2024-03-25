@@ -8,7 +8,7 @@ def generate_numbers():
         number = np.random.randint(20000, 30001)
         if number %12 == 0:
             numbers.append(number)
-        return numbers
+    return numbers
 
 #to be written 
 def HumanChoiceNumber():
