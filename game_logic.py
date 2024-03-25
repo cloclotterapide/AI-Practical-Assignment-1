@@ -1,19 +1,17 @@
 #might have to add some imports here
 #game logic functions
+import numpy as np  
 
-#to be written
-def GeneratingRandomNumber():
-    return 0
-
-#to be written 
-def PossibleNumbers():
-    L = []
-    for i in range(0,5):
-        L.append(GeneratingRandomNumber())
-    return L
+def generate_numbers():
+    numbers = []
+    while len(numbers) < 5:
+        number = np.random.randint(20000, 30001)
+        if number %12 == 0:
+            numbers.append(number)
+    return numbers
 
 #to be written 
-def HumanChoiceNumber():
+def HumanChoiceNumber(NumberList):
     #would be the chosen number by the human using buttons on gui i suppose
     number = 0
     return number
