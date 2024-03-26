@@ -1,7 +1,7 @@
 import tkinter as tk
 import numpy as np
 
-# Alpha-Beta Algorithm
+# alpha-beta algorithm
 def alpha_beta(number, depth, alpha, beta, is_maximizing_player, comp_score, human_score):
     if number <= 10:
         return comp_score - human_score
@@ -48,7 +48,7 @@ def handle_click(number):
     depth = 10  # We can regulate the depth based on our needs !!!!!!
     ai_score = alpha_beta(initial_number, depth, float('-inf'), float('inf'), True, comp_score, human_score)
     print(f"AI Score Evaluation: {ai_score}")
-    # If we want to update our GUI here to reflect the AI's move. 
+    
 
 # 5 initial numbers
 def generate_numbers():
