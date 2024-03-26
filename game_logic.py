@@ -1,6 +1,12 @@
-import math
+import tkinter as tk
 import numpy as np
 
+def handle_click(number):
+    global initial_number
+    initial_number = number
+    for button in buttons:
+        button.destroy()
+    
 # 5 initial numbers
 def generate_numbers():
     numbers = []
@@ -14,28 +20,23 @@ def generate_numbers():
 def initialize():
     comp_score = 0
     human_score = 0
+    numbers = generate_numbers()
 
-    # will continue
-
-#to be written 
-def chosen_num():
-    number = 0
-    return number
+    #will continue
+    global root
+    root = tk.Tk()
+    root.title("Number Game")
     
-#Modifying the score depending on the player
-def Scoring(CurrentPlayerScore,OpponentPlayerScore,Number):
-    while Number > 10:
-        if (Number % 2 == 0):
-            OpponentPlayerScore -= 1
-        else:
-            CurrentPlayerScore += 1
-        return CurrentPlayerScore, OpponentPlayerScore
+    global buttons
+    buttons = []
+    for i, num in enumerate(numbers):
+        button = tk.Button(root, text = num, command = lambda num = num: handle_click(num))
+        button.pack()
+        buttons.append(button)
+    
+    root.mainloop()
+    
+    return comp_score, human_score, initial_number
 
-#Print the winner 
-def Winner(ComputerScore,HumanScore):
-    if (ComputerScore > HumanScore):
-        print("Computer wins")
-    elif (ComputerScore < HumanScore):
-        print("You win")
-    else:
-        print("It's a draw")
+comp_score, human_score, initial_number = initialize()
+print("Initial number chosen:", initial_number)
