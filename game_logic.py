@@ -1,17 +1,19 @@
 #might have to add some imports here
 #game logic functions
-import numpy as np  
 
-def generate_numbers():
-    numbers = []
-    while len(numbers) < 5:
-        number = np.random.randint(20000, 30001)
-        if number %12 == 0:
-            numbers.append(number)
-    return numbers
+#to be written
+def GeneratingRandomNumber():
+    return 0
 
 #to be written 
-def HumanChoiceNumber(NumberList):
+def PossibleNumbers():
+    L = []
+    for i in range(0,5):
+        L.append(GeneratingRandomNumber())
+    return L
+
+#to be written 
+def HumanChoiceNumber():
     #would be the chosen number by the human using buttons on gui i suppose
     number = 0
     return number
@@ -19,9 +21,9 @@ def HumanChoiceNumber(NumberList):
 #Initialisation of the game
 def Initialisation():
     ComputerScore = 0
-    HumainScore = 0
+    HumanScore = 0
     Number = HumanChoiceNumber()
-    return ComputerScore, HumainScore, Number
+    return ComputerScore, HumanScore, Number
     
 #Modifying the score depending of the player
 def Scoring(CurrentPlayerScore,OpponentPlayerScore,Number):
