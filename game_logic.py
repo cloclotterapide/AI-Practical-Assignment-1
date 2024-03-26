@@ -1,16 +1,16 @@
+import math
+import numpy as np
 #might have to add some imports here
 #game logic functions
 
-#to be written
-def GeneratingRandomNumber():
-    return 0
-
-#to be written 
-def PossibleNumbers():
-    L = []
-    for i in range(0,5):
-        L.append(GeneratingRandomNumber())
-    return L
+# 5 initial numbers
+def generate_numbers():
+    numbers = []
+    while len(numbers) < 5:
+        number = np.random.randint(20000, 30001)
+        if number %12 == 0:
+            numbers.append(number)
+    return numbers
 
 #to be written 
 def HumanChoiceNumber():
