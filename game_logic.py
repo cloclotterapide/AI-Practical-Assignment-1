@@ -1,29 +1,26 @@
 import math
 import numpy as np
-#might have to add some imports here
-#game logic functions
 
 # 5 initial numbers
 def generate_numbers():
     numbers = []
     while len(numbers) < 5:
         number = np.random.randint(20000, 30001)
-        if number %12 == 0:
+        if number % 12 == 0:
             numbers.append(number)
     return numbers
 
+#Initialisation of the game
+def initialize():
+    comp_score = 0
+    human_score = 0
+
+    # will continue
+
 #to be written 
-def HumanChoiceNumber():
-    #would be the chosen number by the human using buttons on gui i suppose
+def chosen_num():
     number = 0
     return number
-
-#Initialisation of the game
-def Initialisation():
-    ComputerScore = 0
-    HumanScore = 0
-    Number = HumanChoiceNumber()
-    return ComputerScore, HumanScore, Number
     
 #Modifying the score depending on the player
 def Scoring(CurrentPlayerScore,OpponentPlayerScore,Number):
