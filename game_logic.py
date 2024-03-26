@@ -25,17 +25,14 @@ def Initialisation():
     Number = HumanChoiceNumber()
     return ComputerScore, HumanScore, Number
     
-#Modifying the score depending of the player
+#Modifying the score depending on the player
 def Scoring(CurrentPlayerScore,OpponentPlayerScore,Number):
-    if (Number % 2 == 0):
-        OpponentPlayerScore -= 1
-    else:
-        OpponentPlayerScore += 1
-    return CurrentPlayerScore,OpponentPlayerScore
-
-#True if the game is over, False if the game is not over
-def EndGame(Number):
-    return (Number <= 10)
+    while Number > 10:
+        if (Number % 2 == 0):
+            OpponentPlayerScore -= 1
+        else:
+            CurrentPlayerScore += 1
+        return CurrentPlayerScore, OpponentPlayerScore
 
 #Print the winner 
 def Winner(ComputerScore,HumanScore):
