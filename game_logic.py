@@ -1,6 +1,32 @@
 import tkinter as tk
 import numpy as np
 
+# minimax algorithm
+import random
+
+
+def generation_numbers():
+    list=[]
+    while len(list)<5:
+        number=random.randint(20000, 30000)
+        if number not in list and number % 2 == 0 and number % 3== 0 and number % 4 ==0:
+            list.append(number)
+    return list
+
+def output_numbers(list):
+    print("Generated numbers:")
+    for i, number in enumerate(list):
+        print(f"{i+1} - {number}")
+
+
+generation_numbers = generation_numbers()
+output_numbers(generation_numbers)
+
+
+
+
+
+
 # alpha-beta algorithm
 def alpha_beta(number, depth, alpha, beta, is_maximizing_player, comp_score, human_score):
     if number <= 10:
