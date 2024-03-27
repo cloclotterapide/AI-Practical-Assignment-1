@@ -6,21 +6,66 @@ import random
 
 
 def generation_numbers():
-    list=[]
-    while len(list)<5:
+    numlist=[]
+    while len(numlist)<5:
         number=random.randint(20000, 30000)
-        if number not in list and number % 2 == 0 and number % 3== 0 and number % 4 ==0:
-            list.append(number)
-    return list
+        if number not in numlist and number % 2 == 0 and number % 3== 0 and number % 4 ==0:
+            numlist.append(number)
+    return numlist
 
-def output_numbers(list):
+
+def output_numbers(numlist):
     print("Generated numbers:")
-    for i, number in enumerate(list):
+    for i, number in enumerate(numlist):
         print(f"{i+1} - {number}")
+
+
+def choose_Snumber(numbers):
+    output_numbers(numbers)
+    while True:
+        try:
+            index = int(input("Choose the number to start this Game : "))
+            if 1 <= index <= len(numbers):
+                return numbers[index - 1]
+            else:
+                print("...Please choose a valid number from the list.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+
+'''
+
+Your code (modify what you want)
+
+
+def game():
+
+
+example : 
+if player1_points == player2_points:
+    print("Draw Match !")
+elif player1_points > player2_points:
+    print("Player 1 Win !")
+else:
+    print("Player 2 Win !")
+
+    
+
+if __name__ == "__main__":
+    numbers =generation_numbers()
+    starting_number= choose_Snumber(generation_numbers)
+    # game(starting_number)
+
+
+'''
+
 
 
 generation_numbers = generation_numbers()
 output_numbers(generation_numbers)
+
+start_number = choose_Snumber(generation_numbers)
+print("Starting number chosen by the first person is :", start_number)
 
 
 
