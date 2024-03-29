@@ -1,7 +1,7 @@
 import tkinter as tk
 import random
 
-# Global variables
+# Global variables defined for the game
 comp_score = 0
 human_score = 0
 initial_number = 0
