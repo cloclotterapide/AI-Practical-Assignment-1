@@ -30,14 +30,11 @@ def test_alpha_beta_terminal_state():
 def test_minimax_non_terminal_state():
     # Non-terminal state, maximizing player's turn
     score = minimax(24, True, 0, 0)
-    # We can't predict the exact outcome without knowing the strategy,
-    # but we can check if the function returns an integer which is required.
     assert isinstance(score, int), "Minimax should return an integer score."
 
 def test_alpha_beta_non_terminal_state():
     # Non-terminal state, maximizing player's turn
     score = alpha_beta(24, 0, float('-inf'), float('inf'), True, 0, 0)
-    # Similar to minimax, we expect an integer score.
     assert isinstance(score, int), "Alpha-beta should return an integer score."
 
 def test_minimax_strategic_decision():
