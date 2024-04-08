@@ -12,7 +12,12 @@ currentnumber_label = Label(root, text="Current Number: ")
 currentnumber_label.pack()
 Turn_Count_label = Label(root, text="Turn Count: ",font=6)
 Turn_Count_label.pack()
-#
+
+# Global variables to track data
+minimax_nodes_visited = 0
+alpha_beta_nodes_visited = 0
+execution_times = []  # This will store execution times for both algorithms
+victories = {'human': 0, 'computer': 0}  # To track victories
 
 def generate_numbers():
     """
@@ -21,7 +26,7 @@ def generate_numbers():
     numbers = []
     while len(numbers) < 5:
         number = random.randint(20000, 30000)
-        if number % 12 == 0 and (number not in numbers) :  # divisible by 2, 3, and 4
+        if number % 12 == 0 and (number not in numbers):  # divisible by 2, 3, and 4
             numbers.append(number)
     return numbers
 
@@ -41,6 +46,9 @@ def minimax(number, is_maximizing_player, comp_score, human_score):
 
     Note: This implementation assumes that the number is always divisible by at least one of the factors [2, 3, 4].
     """
+    global minimax_nodes_visited
+    minimax_nodes_visited += 1
+    
     if number <= 10:
         return comp_score - human_score
 
@@ -82,6 +90,9 @@ def alpha_beta(number, depth, alpha, beta, is_maximizing_player, comp_score, hum
 
     Note: The function assumes that the current number is greater than 10, as the game loop in the main code terminates when the current number becomes less than or equal to 10.
     """
+    global alpha_beta_nodes_visited
+    alpha_beta_nodes_visited += 1
+    
     if number <= 10:
         return comp_score - human_score
 
@@ -199,6 +210,13 @@ def AI_turn(Game_Parameters):
     Take the game parameters as input and make the AI move
     Game_Parameters = (comp_score,human_score,Turn_Count,Number,Algorithm_Choice)
     '''
+    global execution_times, minimax_nodes_visited, alpha_beta_nodes_visited
+    
+    # Resetting node counters before the move
+    minimax_nodes_visited = 0
+    alpha_beta_nodes_visited = 0
+    start_time = time.time()
+    
     print(Game_Parameters)
     comp_score = Game_Parameters[0]
     human_score = Game_Parameters[1]
@@ -208,8 +226,6 @@ def AI_turn(Game_Parameters):
     print(Game_Parameters)
     Turn_Count += 1
     Turn_Count_label.config(text=f"Turn: {Turn_Count}")
-    
-
     
     ai_move_label = Label(root, text="AI Move: ",font=6)
     ai_move_label.pack(side=TOP,anchor=CENTER)
@@ -231,7 +247,11 @@ def AI_turn(Game_Parameters):
                 if score > best_score:
                     best_score = score
                     best_move = div
-                    
+         
+        end_time = time.time()
+        execution_time = end_time - start_time
+        execution_times.append(execution_time)  # Log execution time
+               
         current_number = current_number // best_move
         #print(f"AI chooses to divide by {best_move}")
         
@@ -258,7 +278,15 @@ def no_more_moves(L):
 
 # Determine the winner
 def end_game(Game_Parameters):
+    global victories, execution_times, minimax_nodes_visited, alpha_beta_nodes_visited
+
     comp_score, human_score = Game_Parameters[0:2]
+    # Increment victory counters based on game outcome
+    if comp_score > human_score:
+        victories['computer'] += 1
+    elif human_score > comp_score:
+        victories['human'] += 1
+        
     end_label = Label(root, text=f"Computer: {comp_score}, Human: {human_score}", font=6)
     end_label.pack()
     if comp_score == human_score:
@@ -267,6 +295,15 @@ def end_game(Game_Parameters):
         end_label.config(text="Computer won: " + end_label.cget("text")) 
     else:
         end_label.config(text="Human won: "+ end_label.cget("text"))
+        
+    # Log the data
+    print(f"Game Over. Computer: {comp_score}, Human: {human_score}")
+    print(f"Minimax nodes visited: {minimax_nodes_visited}, Alpha-Beta nodes visited: {alpha_beta_nodes_visited}")
+    print(f"Average move execution time: {sum(execution_times) / len(execution_times) if execution_times else 0} seconds")
+    print(f"Computer victories: {victories['computer']}, Human victories: {victories['human']}")
+
+    # Reset execution_times for the next game
+    execution_times = []
 
 # Function to start the game based on the user's selection  
 def initialize_algo():
@@ -282,7 +319,7 @@ def initialize_algo():
     Algo_var = IntVar()
     Info_label = Label(root, text="Select an algorithm :", font=6)
     Info_label.pack(side=TOP,anchor=W)
-    radio_button_MinMax = Radiobutton(root, text="minimax", variable=Algo_var, value=0, font=6)
+    radio_button_MinMax = Radiobutton(root, text="minmax", variable=Algo_var, value=0, font=6)
     radio_button_AlphaBeta= Radiobutton(root, text="AlphaBeta", variable=Algo_var, value=1, font=6)
     radio_button_MinMax.pack(side=TOP,anchor=W)
     radio_button_AlphaBeta.pack(side=TOP,anchor=W)
@@ -365,4 +402,3 @@ if __name__ == "__main__":
     initialize_algo()
 
 root.mainloop()
-
