@@ -282,7 +282,7 @@ def initialize_algo():
     Algo_var = IntVar()
     Info_label = Label(root, text="Select an algorithm :", font=6)
     Info_label.pack(side=TOP,anchor=W)
-    radio_button_MinMax = Radiobutton(root, text="minmax", variable=Algo_var, value=0, font=6)
+    radio_button_MinMax = Radiobutton(root, text="minimax", variable=Algo_var, value=0, font=6)
     radio_button_AlphaBeta= Radiobutton(root, text="AlphaBeta", variable=Algo_var, value=1, font=6)
     radio_button_MinMax.pack(side=TOP,anchor=W)
     radio_button_AlphaBeta.pack(side=TOP,anchor=W)
