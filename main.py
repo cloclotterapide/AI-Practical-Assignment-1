@@ -21,7 +21,7 @@ def generate_numbers():
     numbers = []
     while len(numbers) < 5:
         number = random.randint(20000, 30000)
-        if number % 12 == 0:  # divisible by 2, 3, and 4
+        if number % 12 == 0 and (number not in numbers) :  # divisible by 2, 3, and 4
             numbers.append(number)
     return numbers
 
